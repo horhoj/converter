@@ -12,7 +12,6 @@ export const fetchCurrencyDataList = createAsyncThunk(
     };
 
     const response = await axios.request<CurrencyDataItem[]>(requestConfig);
-    console.log(response.data);
     return response.data;
   },
 );
