@@ -30,7 +30,16 @@ export const { reducer, actions } = createSlice({
       })
       .addCase(thunks.fetchCurrencyDataList.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.currencyDataList = action.payload;
+        //из-за особенностей АПИ добавим ГРИВНУ ВРУЧНУЮ
+        const UANCurrencyItem: CurrencyDataItem = {
+          txt: 'ГРИВНА',
+          cc: 'UAH',
+          rate: 1,
+          exchangedate: '',
+          r030: 999999,
+        };
+
+        state.currencyDataList = [UANCurrencyItem, ...action.payload];
       })
       .addCase(thunks.fetchCurrencyDataList.rejected, (state, { error }) => {
         state.isLoading = false;

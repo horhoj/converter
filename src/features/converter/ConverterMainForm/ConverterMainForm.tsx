@@ -7,6 +7,7 @@ import { OptionItem } from '../../UI/Select/types';
 import { DECIMAL_SCALE, THOUSAND_SEPARATOR } from '../config';
 import styles from './ConverterMainForm.module.scss';
 import { getConvertedValue, getCurrencyList } from './helpers';
+import { Header } from './Header';
 
 export const ConverterMainForm: FC = () => {
   const dispatch = useAppDispatch();
@@ -99,7 +100,10 @@ export const ConverterMainForm: FC = () => {
 
   return (
     <div className={styles.wrap}>
-      <div>ConverterMainForm</div>
+      <h3>Converter</h3>
+      <div>
+        <Header currencyDataList={currencyDataList} />
+      </div>
       <div>
         <Input
           value={primaryUnits}
